@@ -14,6 +14,9 @@ export class LoginComponent implements OnInit {
   constructor(private service:UserService,private router:Router,private toastr:ToastrService) { }
 
   ngOnInit() {
+    if(localStorage.getItem('token')!=null){
+      this.router.navigateByUrl('/registration');
+    }
     this.resetForm();
   }
 resetForm(form?:NgForm){
@@ -36,7 +39,7 @@ this.service.postUser(form.value).subscribe(
   (res:any)=>{
    localStorage.setItem('token',res.token);
    this.router.navigateByUrl('/registration'); 
-   console.log(res.token);
+   
   },
   err=>{
     if(err.status == 400){
