@@ -17,7 +17,7 @@ export class UserService {
   }
 
   getUser(){
-    var tokenHeader = new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('token')});
-    return this.http.get(this.baseUrl+'/GetUser',{ headers: tokenHeader});
+    //var tokenHeader = new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('token')});
+    return this.http.get(this.baseUrl+'/GetUser');
   }
 }

@@ -7,19 +7,48 @@ import { LoginComponent } from './users/login/login.component';
 import { RegistrationComponent } from './users/registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{FormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserService } from './Shared/user.service';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
  
+
+
 import { ToastrModule } from 'ngx-toastr';
 import { AuthGuard } from './auth.guard';
+import { AuthInterceptor } from './auth.interceptor';
+import { HeaderComponent } from './component/header/header.component';
+import { HomeComponent } from './component/home/home.component';
+import { SidenavListComponent } from './component/sidenav-list/sidenav-list.component';
+
+import { MatTabsModule, MatSidenavModule,MatToolbarModule,MatIconModule,MatButtonModule,MatSlideToggleModule,MatListModule } from '@angular/material';
+import{FlexLayoutModule} from '@angular/flex-layout';
+import { LayoutComponent } from './component/layout/layout.component';
+import { AuthService } from './auth.service';
+import {JwtModule, JWT_OPTIONS, JwtModuleOptions } from '@auth0/angular-jwt';
+
+export function getToken() {
+  return localStorage.getItem('access_token');
+ }
+const JWT_Module_Options: JwtModuleOptions = {
+   config:{
+     tokenGetter: getToken,
+     whitelistedDomains:['localhost:4200']
+   }
+};
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    HeaderComponent,
+    SidenavListComponent,
+    HomeComponent,
+    LayoutComponent
+   
   ],
   imports: [
     BrowserModule,
@@ -27,9 +56,23 @@ import { AuthGuard } from './auth.guard';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    AngularFontAwesomeModule,
+    MatSidenavModule,
+    MatTabsModule,
+    MatToolbarModule,
+    FlexLayoutModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSlideToggleModule,
+    MatListModule,
+    JwtModule.forRoot(JWT_Module_Options),
     ToastrModule.forRoot()
   ],
-  providers: [AuthGuard],
+  providers: [AuthService,{ 
+    provide:HTTP_INTERCEPTORS,
+    useClass:AuthInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
