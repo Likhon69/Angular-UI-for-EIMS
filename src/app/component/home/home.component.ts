@@ -11,7 +11,7 @@ import { User } from 'src/app/model/user';
 export class HomeComponent implements OnInit {
 
   userDetails:{};
-  constructor(private services:UserService) { }
+  constructor(private services:UserService,private router:Router) { }
  
   ngOnInit() {
     this.services.getUser().subscribe(res=>{
@@ -24,5 +24,9 @@ export class HomeComponent implements OnInit {
   }
    
 
+  onLogout(){
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']); 
+    }
 
 }

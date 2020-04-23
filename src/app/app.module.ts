@@ -26,6 +26,15 @@ import{FlexLayoutModule} from '@angular/flex-layout';
 import { LayoutComponent } from './component/layout/layout.component';
 import { AuthService } from './auth.service';
 import {JwtModule, JWT_OPTIONS, JwtModuleOptions } from '@auth0/angular-jwt';
+import { FooterComponent } from './component/footer/footer.component';
+import { MainComponent } from './module/main/main.component';
+import { SidebarComponent } from './component/sidebar/sidebar.component';
+
+import { MainModule } from './module/main/main.module';
+
+
+
+
 
 export function getToken() {
   return localStorage.getItem('access_token');
@@ -44,10 +53,13 @@ const JWT_Module_Options: JwtModuleOptions = {
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    HeaderComponent,
+
     SidenavListComponent,
-    HomeComponent,
-    LayoutComponent
+    LayoutComponent,
+   
+   
+    
+  
    
   ],
   imports: [
@@ -65,6 +77,8 @@ const JWT_Module_Options: JwtModuleOptions = {
     MatButtonModule,
     MatSlideToggleModule,
     MatListModule,
+  
+    MainModule,
     JwtModule.forRoot(JWT_Module_Options),
     ToastrModule.forRoot()
   ],
