@@ -18,7 +18,13 @@ export class HeaderComponent implements OnInit {
   @Output() public sidenavToggle = new EventEmitter();
   ngOnInit() {
    
-   
+    this.services.getUser().subscribe(res=>{
+      this.userDetails = res;  
+     
+    },
+    err=>{
+      console.log(err);
+    })
    
   }
    

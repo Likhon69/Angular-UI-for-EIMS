@@ -14,19 +14,10 @@ export class HomeComponent implements OnInit {
   constructor(private services:UserService,private router:Router) { }
  
   ngOnInit() {
-    this.services.getUser().subscribe(res=>{
-      this.userDetails = res;  
-     
-    },
-    err=>{
-      console.log(err);
-    })
+   
   }
    
 
-  onLogout(){
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']); 
-    }
+
 
 }

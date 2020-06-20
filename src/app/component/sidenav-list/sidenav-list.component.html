@@ -1,13 +1,23 @@
 
 <mat-nav-list>
+  <div class="profile-card">
+    <div class="header">
+      <h2 style="color:#E62642; font-size: 20px;">Bornomala School</h2>
+    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Bavarian_Intl_School_Logo.png" alt="">
+  </div>
+  <mat-divider></mat-divider>
     <a mat-list-item routerLink="/home" (click)="onSidenavClose()">
-      <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
+      <mat-icon style="color: #E62642;">home</mat-icon> <span class="nav-caption" style="color:#E62642; font-size: 20px;">Home</span>
     </a>
     <a mat-list-item routerLink="/owner" (click)="onSidenavClose()">
-      <mat-icon>assignment_ind</mat-icon> <span class="nav-caption">Owner Actions</span>
+      <mat-icon style="color: #E62642;">assignment_ind</mat-icon> <span class="nav-caption" style="color: #E62642; font-size: 20px;">Owner Actions</span>
     </a>
     <a mat-list-item routerLink="#" (click)="onSidenavClose()">
-      <mat-icon>account_balance</mat-icon><span class="nav-caption">Account Actions</span>
+      <mat-icon style="color: #E62642;">account_balance</mat-icon><span class="nav-caption" style="color: #E62642; font-size: 20px;">Account Actions</span>
+    </a>
+    <a mat-list-item routerLink="/home/settings" (click)="onSidenavClose()">
+      <mat-icon style="color: #E62642;">settings</mat-icon><span class="nav-caption" style="color: #E62642; font-size: 20px;">Settings</span>
     </a>
    
   </mat-nav-list>

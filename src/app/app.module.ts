@@ -21,16 +21,16 @@ import { HeaderComponent } from './component/header/header.component';
 import { HomeComponent } from './component/home/home.component';
 import { SidenavListComponent } from './component/sidenav-list/sidenav-list.component';
 
-import { MatTabsModule, MatSidenavModule,MatToolbarModule,MatIconModule,MatButtonModule,MatSlideToggleModule,MatListModule } from '@angular/material';
+import { MatTabsModule, MatSidenavModule,MatToolbarModule,MatIconModule,MatButtonModule,MatSlideToggleModule,MatListModule,MatGridListModule } from '@angular/material';
 import{FlexLayoutModule} from '@angular/flex-layout';
 import { LayoutComponent } from './component/layout/layout.component';
 import { AuthService } from './auth.service';
 import {JwtModule, JWT_OPTIONS, JwtModuleOptions } from '@auth0/angular-jwt';
-import { FooterComponent } from './component/footer/footer.component';
-import { MainComponent } from './module/main/main.component';
-import { SidebarComponent } from './component/sidebar/sidebar.component';
+
 
 import { MainModule } from './module/main/main.module';
+
+
 
 
 
@@ -54,14 +54,8 @@ const JWT_Module_Options: JwtModuleOptions = {
     LoginComponent,
     RegistrationComponent,
 
-    SidenavListComponent,
-    LayoutComponent,
-   
-   
-    
-  
-   
-  ],
+    LayoutComponent
+],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -77,7 +71,7 @@ const JWT_Module_Options: JwtModuleOptions = {
     MatButtonModule,
     MatSlideToggleModule,
     MatListModule,
-  
+    MatGridListModule,
     MainModule,
     JwtModule.forRoot(JWT_Module_Options),
     ToastrModule.forRoot()

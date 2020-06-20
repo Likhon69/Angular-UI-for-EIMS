@@ -8,12 +8,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class UserService {
 
   formData:User;
-  readonly baseUrl= "https://localhost:44315/api/OAuth";
+  readonly baseUrl= "https://localhost:44321/api/OAuth";
 
   constructor(private http:HttpClient) { }
 
   postUser(formData:User){
-    return this.http.post(this.baseUrl+'/Authenticate',formData);
+    return this.http.post(this.baseUrl+'/GetAuthentication',formData);
   }
 
   getUser(){
